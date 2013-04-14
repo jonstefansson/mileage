@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>net.jonstef</groupId>
+  <artifactId>mileage</artifactId>
+  <version>1.0-SNAPSHOT</version>
+	<modules>
+		<module>mileage-api</module>
+		<module>mileage-client</module>
+		<module>mileage-service</module>
+	</modules>
+	<packaging>pom</packaging>
+
+  <name>mileage</name>
+  <url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.yammer.dropwizard</groupId>
+				<artifactId>dropwizard-core</artifactId>
+				<version>0.6.2</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.yammer.dropwizard</groupId>
+				<artifactId>dropwizard-jdbi</artifactId>
+				<version>0.6.2</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.yammer.dropwizard</groupId>
+				<artifactId>dropwizard-testing</artifactId>
+				<version>0.6.2</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>1.9.5</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<version>1.3.171</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.11</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+</project>
