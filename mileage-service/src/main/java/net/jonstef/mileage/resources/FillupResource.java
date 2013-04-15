@@ -3,6 +3,7 @@ package net.jonstef.mileage.resources;
 import net.jonstef.mileage.api.Fillup;
 import net.jonstef.mileage.api.Vehicle;
 import net.jonstef.mileage.jdbi.FillupDAO;
+import net.jonstef.mileage.util.MpgCalculator;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
@@ -17,6 +18,7 @@ import java.util.List;
 public class FillupResource {
 
 	private final FillupDAO fillupDAO;
+	private final MpgCalculator mpgCalculator = new MpgCalculator();
 
 	@Context
 	private UriInfo context;
@@ -29,7 +31,9 @@ public class FillupResource {
 	@Path("vehicle/{vehicle}")
 	public List<Fillup> getFillups(@PathParam("vehicle") String vehicle, @QueryParam("limit") Integer limit) {
 		Vehicle veh = Vehicle.valueOf(vehicle);
-		return fillupDAO.getFillups(veh.name(), limit);
+		List<Fillup> fillups = fillupDAO.getFillups(veh.name(), limit);
+		mpgCalculator.calculate(fillups.iterator());
+		return fillups;
 	}
 
 	@GET
