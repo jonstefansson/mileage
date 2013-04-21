@@ -49,7 +49,7 @@ public class FillupDAOTest {
 
 	@Test(expected = TransactionFailedException.class)
 	public void testOnDemandInsert() {
-		logger.info("BEGIN testOnDemand");
+		logger.info("BEGIN testOnDemandInsert");
 		Handle h = dbi.open();
 		dbi.getTransactionHandler().inTransaction(h, new VoidTransactionCallback() {
 			@Override
