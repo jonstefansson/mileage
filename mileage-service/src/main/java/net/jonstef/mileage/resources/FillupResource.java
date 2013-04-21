@@ -29,7 +29,7 @@ public class FillupResource {
 
 	@GET
 	@Path("vehicle/{vehicle}")
-	public List<Fillup> getFillups(@PathParam("vehicle") String vehicle, @QueryParam("limit") Integer limit) {
+	public List<Fillup> getFillups(@PathParam("vehicle") String vehicle, @QueryParam("limit") @DefaultValue("10") Integer limit) {
 		Vehicle veh = Vehicle.valueOf(vehicle);
 		List<Fillup> fillups = fillupDAO.getFillups(veh.name(), limit);
 		mpgCalculator.calculate(fillups.iterator());
