@@ -2,10 +2,7 @@ package net.jonstef.mileage.jdbi;
 
 import net.jonstef.mileage.api.Fillup;
 import net.jonstef.mileage.api.Vehicle;
-import org.skife.jdbi.v2.sqlobject.Bind;
-import org.skife.jdbi.v2.sqlobject.BindBean;
-import org.skife.jdbi.v2.sqlobject.SqlQuery;
-import org.skife.jdbi.v2.sqlobject.SqlUpdate;
+import org.skife.jdbi.v2.sqlobject.*;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
 import java.util.List;
@@ -27,7 +24,8 @@ public interface FillupDAO extends AutoCloseable {
 	void createTable();
 
 	@SqlUpdate("insert into fillup(date, mileage, quantity, vehicle) values (:date, :mileage, :quantity, :vehicle)")
-	void insert(@BindBean Fillup fillup);
+	@GetGeneratedKeys
+	long insert(@BindBean Fillup fillup);
 
 	@SqlQuery("select id, date, mileage, quantity, vehicle from fillup where id = :id")
 	Fillup findById(@Bind("id") Long id);
