@@ -45,9 +45,9 @@ public class FillupResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response insertFillup(Fillup fillup) {
-		fillupDAO.insert(fillup);
+		long key = fillupDAO.insert(fillup);
 		UriBuilder ub = context.getAbsolutePathBuilder();
-		URI location = ub.path(fillup.getId().toString()).build();
+		URI location = ub.path(FillupResource.class, "getFillupById").build(Long.valueOf(key));
 		return Response.created(location).build();
 	}
 
