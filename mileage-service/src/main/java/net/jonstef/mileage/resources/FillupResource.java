@@ -43,7 +43,6 @@ public class FillupResource {
 	}
 
 	@POST
-	@Path("{vehicle}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response insertFillup(Fillup fillup) {
 		fillupDAO.insert(fillup);
