@@ -19,3 +19,4 @@ insert into Fillup (mileage, quantity, date, vehicle) VALUES (8516, 2.239, '2013
 insert into Fillup (mileage, quantity, date, vehicle) VALUES (8593, 2.0, '2013-03-19', 'VSTAR');
 insert into Fillup (mileage, quantity, date, vehicle) VALUES (8669, 2.293, '2013-04-03', 'VSTAR');
 insert into Fillup (mileage, quantity, date, vehicle) VALUES (8757, 2.805, '2013-04-20', 'VSTAR');
+insert into Fillup (mileage, quantity, date, vehicle) VALUES (125942, 10.417, '2013-05-03', 'ACURA');
