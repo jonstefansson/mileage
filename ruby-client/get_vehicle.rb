@@ -1,7 +1,7 @@
 require 'json'
 require 'restclient'
 
-vehicle = ARGV[0]
+vehicle = ARGV[0].upcase
 vehicle ||= 'VSTAR'
 fillup = RestClient::Resource.new('http://localhost:8080/fillup')
 response = fillup["vehicle/#{vehicle}"].get :accept => :json, :params => {:limit => 10}
