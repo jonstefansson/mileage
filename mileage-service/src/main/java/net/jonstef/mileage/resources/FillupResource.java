@@ -18,19 +18,20 @@ import java.util.List;
 public class FillupResource {
 
 	private final FillupDAO fillupDAO;
-	private final MpgCalculator mpgCalculator = new MpgCalculator();
+	private final MpgCalculator mpgCalculator;
 
 	@Context
 	private UriInfo context;
 
-	public FillupResource(FillupDAO fillupDAO) {
+	public FillupResource(FillupDAO fillupDAO, MpgCalculator mpgCalculator) {
 		this.fillupDAO = fillupDAO;
+		this.mpgCalculator = mpgCalculator;
 	}
 
 	@GET
 	@Path("vehicle/{vehicle}")
 	public List<Fillup> getFillups(@PathParam("vehicle") String vehicle, @QueryParam("limit") @DefaultValue("10") Integer limit) {
-		Vehicle veh = Vehicle.valueOf(vehicle);
+		Vehicle veh = Vehicle.valueOf(vehicle.toUpperCase());
 		List<Fillup> fillups = fillupDAO.getFillups(veh.name(), limit);
 		mpgCalculator.calculate(fillups.iterator());
 		return fillups;
