@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-id="44"
+id=${1:?"fillup id is required"}
 
 curl \
 -v \

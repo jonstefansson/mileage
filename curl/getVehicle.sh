@@ -2,7 +2,7 @@
 
 # vehicle=${0:?"vehicle code is required"}
 # SCOOTER, VSTAR, ACURA
-vehicle="VSTAR"
+vehicle=${1:?"vehicle is required"}
 
 curl \
 -v \
